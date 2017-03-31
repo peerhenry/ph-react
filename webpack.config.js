@@ -31,5 +31,9 @@ module.exports = {
   externals: {
     'react': 'React',
     'react-dom': 'ReactDOM'
+  },
+
+  devServer: {
+    contentBase: './public'
   }
 }
