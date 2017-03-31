@@ -2,25 +2,28 @@ var webpack = require('webpack');
 
 module.exports = {
 
-  context: __dirname + 'src',
-  entry: './main',
+  context: __dirname,
+  entry: './src/main',
 
   output: {
-    path: __dirname + '/build',
+    path: __dirname + '/public',
     filename: 'bundle.js'
   },
 
   resolve: {
-    extensions: ['.webpack.js', '.web.js', '.js'],
+    extensions: ['.webpack.js', '.web.js', '.js', '.jsx'],
     alias: {}
   },
 
   module: {
-    rules:[
+    loaders:[
       {
         test: /\.jsx?$/,
-        use: 'babel-loader',
-        exclude: 'node_modules'
+        loader: 'babel-loader',
+        //exclude: 'node_modules',
+        query: {
+          presets: ['react', 'es2015']
+        }
       }
     ]
   },
@@ -28,6 +31,5 @@ module.exports = {
   externals: {
     'react': 'React',
     'react-dom': 'ReactDOM'
-    
   }
 }
